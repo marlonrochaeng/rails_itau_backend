@@ -1,3 +1,4 @@
 class Transaction < ApplicationRecord
-  validates :valor, uniqueness: { scope: :dataHora, message: "this combination of valor and dataHora already exists" }
+    validates :valor, presence: true
+    validates :dataHora, presence: true
 end
