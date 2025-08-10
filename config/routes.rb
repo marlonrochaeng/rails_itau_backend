@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
   get  "/transactions", to: "transactions#index"
-  get  "/transactions/get_all_in_last_60_days", to: "transactions#get_based_on_time"
+  get  "/transactions/get_all_in_last_n_days", to: "transactions#get_based_on_time"
   post "/transactions", to: "transactions#create"
   delete "/transactions", to: "transactions#delete"
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)

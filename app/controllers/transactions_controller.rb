@@ -7,11 +7,12 @@ class TransactionsController < ApplicationController
   end
 
   def get_based_on_time
-    @transactions = Transaction.where(dataHora: 60.days.ago..Time.now)
+    _days = params[:days].to_i
+    @transactions = Transaction.where(dataHora: _days.days.ago..Time.now)
 
     @soma = @transactions.sum(:valor)
-    @min = @transactions.minimum(:valor)
-    @max = @transactions.maximum(:valor)
+    @min = @transactions.minimum(:valor) || 0
+    @max = @transactions.maximum(:valor) || 0
     @avg = @transactions.average(:valor).to_f
     @len = @transactions.size
 
